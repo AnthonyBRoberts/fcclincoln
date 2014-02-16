@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% block create_profile %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <div class="well">
+		<h2>Welcome {{ user.username }}</h2>
+        <h3>Please create your profile:</h3>
+			<form action="" method="POST">{% csrf_token %}
+            {% for field in form %}
+        			<div class="fieldWrapper">
+            			{{ field.errors }}
+            			{{ field.label_tag }}: {{ field }}
+        			</div>
+    		{% endfor %}
+            <input type="submit" name="submit" value="Save">
+        </form>
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% block reporterdetails %}
+
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    
+    <div class="well">
+        {% if user.is_superuser %}
+        {% if reporter_info %}
+            <h1>Edit Reporter Info {{ reporter_info }}</h1>
+            <h2>{{ reporter_info.first_name }}</h2>
+            <h3>{{ reporter_info.byline }}</h3>
+        {% else %}
+            <h1>Create New Reporter</h1>
+        {% endif %}
+        
+        <form action="" method="POST">
+        
+            {% csrf_token %}
+            
+            <table>
+                {{ reporter_form|as_bootstrap }}
+            </table>
+            
+            <input type="submit" name="submit" value="Submit">
+            
+        </form>
+        {% else %}
+        <h3>You do not have permission to view this page</h3>
+        {% endif %}
+    </div>
+    
+{% endblock %}

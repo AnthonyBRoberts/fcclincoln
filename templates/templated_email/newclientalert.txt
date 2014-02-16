@@ -1,0 +1,7 @@
+Nebraska News Service
+
+{{ subject|striptags }}
+
+A New Client has registered for the Nebraska News Service with this email: {{ text }}
+
+

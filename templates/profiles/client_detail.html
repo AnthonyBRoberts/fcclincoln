@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% block clientdetails %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <div class="well">
+        {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+        {% if client_info %}
+            <h1>Edit Client Info {{ client_info }}</h1>
+            <h2>{{ client_info.city }}</h2>
+            <h3>{{ client_info.email }}</h3>
+        {% else %}
+            <h1>Create New Client</h1>
+        {% endif %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                {{ client_form|as_bootstrap }}
+            </table>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        {% else %}
+        <h3>You do not have permission to view this page</h3>
+        {% endif %}
+    </div>
+{% endblock %}

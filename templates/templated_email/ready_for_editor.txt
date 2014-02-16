@@ -1,0 +1,9 @@
+Nebraska News Service
+
+{{ subject }}
+
+{{ byline }}
+
+{{ story_text|striptags }}
+
+

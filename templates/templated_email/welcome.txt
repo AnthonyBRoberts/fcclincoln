@@ -1,0 +1,21 @@
+{% block subject %}New Story: {{subject}}{% endblock %}
+{% block plain %}
+  Hi {{full_name}},
+
+  {{email_text}}
+  
+  {{story_text}}
+
+
+
+{% endblock %}
+
+{% block html %}
+  <p>Hi {{full_name}},</p>
+
+  <p>{{email_text}}</p>
+
+  <p>{{story_text}}</p>
+
+  <p>Thanks, </p>
+{% endblock %}

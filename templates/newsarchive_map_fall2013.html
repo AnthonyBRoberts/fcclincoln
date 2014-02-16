@@ -1,0 +1,128 @@
+{% extends "mapbase.html" %}
+{% load staticfiles %}
+{% block map_fall2013 %}
+
+
+                  <script>
+
+                  var width = 1040,
+                      height = 500;
+
+                  var dataset = []
+                  d3.csv("{% static "data/data.csv" %}", function(data) {
+                     dataset = data.map(function(d) { return [ +d["lon_0"], +d["lat_0"] ]; });
+                  });
+
+                  // EPSG:3338
+                  var projection = d3.geo.conicEqualArea()
+                      .scale(8000)
+                      .rotate([100, 0])
+                      .center([0, 41.4])
+                      .parallels([55, 65])
+                      .clipExtent([[-1, -1], [width + 1, height + 1]]);
+
+                  var path = d3.geo.path()
+                      .projection(projection)
+                      .pointRadius(5);
+
+                  var svg = d3.select(".well").append("svg")
+                      .append("g")
+                      .attr("width", width)
+                      .attr("height", height);
+
+                  // Create the published_stories variable
+                  var published_stories = d3.select("svg")
+                      .append("g")
+                      .attr("id","published_stories");
+
+                  d3.json("{% static "data/us.json" %}", function(error, us) {
+                    var nebraskaState = us.objects.states.geometries.filter(function(d) { return d.id === 31; })[0],
+                        nebraskaCounties = us.objects.counties.geometries.filter(function(d) { return d.id / 1000 | 0 === 31; });
+
+                    svg.append("path")
+                        .datum(topojson.feature(us, nebraskaState))
+                        .attr("class", "land")
+                        .attr("d", path);  
+
+                    svg.append("path")
+                        .datum(topojson.mesh(us, {type: "GeometryCollection", geometries: nebraskaCounties}))
+                        .attr("class", "boundary")
+                        .attr("d", path);
+
+                    svg.append("path")
+                      .datum({type: "MultiPoint", coordinates: dataset})
+                      .attr("class", "points")
+                      .attr("d", path);
+
+                  });
+
+                  // Load in the published_stories data from the file
+                  d3.json("{% static "data/results2013-12-11-20-16.json" %}", function(collection) {
+                      published_stories
+                          .selectAll("path") //make a path and attach data
+                          .data(collection.features)
+                          .enter().append("path")
+                          .attr("d", path)
+                          .style("stroke","black") //color the path points
+                          .style("stroke-width",1) //size of point stroke
+                          .style("fill","#A60000")
+                          .attr("class",function(d){
+                              var tempname = d.properties.name; //get name property
+                              var tempdate = d.properties.date; //get date property
+                              var tempreporter = d.properties.reporter; //get reporter property
+                              var tempyear = tempdate.slice(6,10);   //just the year
+                              var tempmonth = tempdate.slice(0,2);   //just the month
+                              var tempday = tempdate.slice(3,5);     //just the day
+
+                              return "_"+tempyear+tempmonth+tempday+" publishedstory"; //return the date
+                          })
+                          .append("title") //title is the 'reporter' field in the json file
+                          .text(function(d) { return d.properties.name + '\n' + d.properties.date + '\n' + d.properties.reporter; });
+                  });
+
+                  </script>
+
+            
+            <p><div id="scale"></div></p>
+            <p id="slidertext">All Stories published during the fall semester, starting on September 5th, 2013</p>
+            <p>Use the slider to see published stories during a particular week. The leftmost position shows all published stories.</p>
+
+            <script type="text/javascript">
+
+                        $("#scale").slider({
+                        min: 0, 
+                        max: 14, 
+                        value: 0, 
+                        step: 1, 
+                        slide: function(event, ui) {
+                            var weeks = [0,20130905,20130912,20130919,
+                                          20130926,20131003,20131010,20131017,
+                                          20131024,20131031,20131107,20131114,
+                                          20131121,20131128,20131205]
+                            
+                            if(ui.value == 0)
+                            {
+                                d3.selectAll('.publishedstory')
+                                .style("display","block");
+                                d3.select("#slidertext")
+                                .text('All Stories published during the fall semester, starting on September 5th, 2013');
+                            }else{
+                                d3.selectAll('.publishedstory')
+                                .style("display","none");
+                                $tempvalue = ''+weeks[ui.value]; 
+                                $tempvalueclass = '._'+$tempvalue; 
+                                d3.selectAll($tempvalueclass)
+                                .style("display","block");
+                                d3.select("#slidertext")
+                                .text('Stories published during the week starting on '
+                                    +$tempvalue.substring(4,6)+'/'
+                                    +$tempvalue.substring(6,8)+'/'
+                                    +$tempvalue.substring(0,4));
+                            } //end_else
+                        } //end slide function def
+                        }); //end slider class def
+                </script>
+            </div>
+
+{% endblock %}
+

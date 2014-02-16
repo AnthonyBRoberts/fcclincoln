@@ -1,0 +1,9 @@
+Hi {{ user }},
+
+Here is some stuff I say in an email
+
+{{ email_text }}
+
+{{ story_text }}
+
+Thanks,

@@ -1,0 +1,15 @@
+{% load i18n %}
+{% load url from future %}
+
+
+{% blocktrans with site.name as site_name %}
+You have registered as a client of the Nebraska News Service at {{ site_name }}.
+If this wasn't you, please ignore this email.
+
+To activate this account, please click the following link within the next
+{{ expiration_days }} days:
+{% endblocktrans %}
+
+http://{{ site.domain }}{% url "registration_activate" activation_key=activation_key %}
+
+{% trans "Thank you for being a client of the Nebraska News Service" %}

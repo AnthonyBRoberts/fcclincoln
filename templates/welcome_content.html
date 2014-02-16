@@ -1,0 +1,55 @@
+{% extends "welcome.html" %}
+{% load static from staticfiles %}
+{% block front_page_content %}
+
+<div class="row-fluid">
+            <div class="span8">
+            	<div>
+                    {{ object.text|safe}}
+                    <div class="row-fluid">
+                    	<div class="span12">
+                         <a href="/accounts/register/" style="text-decoration:none">
+                    		<div class="well" onmouseover="this.style.background='#cccccc';" onmouseout="this.style.background='#eeeeee';">
+                            	<h3 align="center" style="color:#C00">Register for the Nebraska News Service today.</h3>
+                            </div> <!-- well -->
+                         </a>
+                    	</div>
+                    </div>
+                    <div class="row-fluid">
+                    	<div class="span8">
+                    		<div class="well" align="center">
+                                
+                    			<img src="{{STATIC_URL}}{{ object.docfile }}" alt="Nebraska News Service Staff" />
+                    		</div> <!-- well -->
+                    	</div> <!-- span8 -->
+                    	<div class="span4">
+                    		<div class="well" style="height:250px">
+                                <h3>NNS Staff:</h3>
+                                {% for r in reporter_list %}
+                                    <p>{{ r.user.get_full_name }}</p>
+                                {% endfor %}
+                    		</div> <!-- well -->
+                    	</div> <!-- span4 -->
+                    </div> <!-- row-fluid -->
+                    
+				</div> <!-- empty -->
+            </div><!-- span8 -->
+            <div class="span4">
+            	<div class="well">
+					<p align="right" >
+                    	<a class="twitter-timeline" height="285" href="https://twitter.com/NebNewsService" data-widget-id="299641054251065346">Tweets by @NebNewsService</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</p>
+    				<p>&quot;The stories produced by the students were timely, well-written and accurate. I especially appreciated the willingness of the Nebraska News Service to cover hearings and report on bills that were of particular interest to (our paper).&quot;</p>
+    				<p>-Kent Warneke, Norfolk Daily News</p>
+					<p>&nbsp;</p>
+    				<p>&quot;For those of us with limited resources and in no close proximity to the legislature, the Nebraska News Service has been a great aid for us.&quot;</p>
+    				<p>-Cody Gerlach, Cambridge Clarion</p>
+    				<p>&nbsp;</p>
+    				<p>&quot;Your news service has certainly helped our newspaper give important coverage of state legislature activities that we simply could not otherwise provide.&quot;</p>
+    				<p>-Klark Byrd, The Sidney Sun-Telegraph</p>
+				</div> <!-- well -->
+            </div> <!-- span4 -->
+            </div> <!-- row-fluid -->
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block editorlist %}
+    
+    <div class="well">
+        {% if user.is_staff %}
+        <h1>These are the Editors</h1>
+        
+        {% if editor_list %}
+        <ul>
+        {% for editor in editor_list %}<li><a href="/profiles/editors/{{ editor.id }}/">{{ editor.first_name }}</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No Editors.</p>
+        {% endif %}
+        <br>
+        <a href="{% url editor_add %}">Create New Editor</a>
+        {% else %}
+        <h3>You do not have permission to view this page</h3>
+        {% endif %}
+    </div>
+    
+{% endblock %}
+

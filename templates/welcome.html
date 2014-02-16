@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load bootstrap_toolkit %}
+<html lang="en">
+<head>
+	<link href="{% static "favicon.ico" %}" title="Nebraska News Service" type="image/x-icon" rel="icon" />
+	<meta charset="utf-8">
+    <title>Nebraska News Service</title>
+	<meta name="description" content="The Nebraska state government news wire service provided by the University of Nebraska College of Journalism and Mass Communications">
+	<meta name="author" content="Anthony Roberts">
+	{% bootstrap_stylesheet_tag %}
+	<style type="text/css">
+        body {
+            padding-top: 20px;
+        }
+	</style>
+    <!--[if lt IE 9]>
+    <script src="{% static "js/html5.js" %}"></script>
+    <![endif]-->
+	<script src="{% static "js/jquery.min.js" %}"></script>   
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	{% bootstrap_javascript_tag %}
+    <link href="{% static "bootstrap/css/custom.css" %}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="container" style="width:1080px">
+    <div class="row-fluid">
+        <div class="span12 column">
+        	<div class="navbar">
+                <div class="navbar-inner" style="padding:0px">
+                    <div class="container-fluid" style="background-image:url({% static "images/welcome/NE_Legislature_1080x350.jpg" %})">
+                        <a href="/" class="brand"><img src="{% static "images/welcome/nns_logo.png" %}" alt="Nebraska News Service Logo" /></a>
+                        
+                        
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+            {% if user.is_authenticated %}
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+             			<div class="nav-collapse collapse navbar-responsive-collapse">
+                            
+                            <ul class="nav">
+                                <li>
+                                    <a href="/about/">About NNS</a>
+                                </li>
+                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                <li>
+                                    <a href="/story">Stories</a>
+                                </li>
+                                <li>
+                                    <a href="/profiles/">Clients</a>
+                                </li>
+                                <li>
+                                    <a href="/reporters/">Reporters</a>
+                                </li>
+                                <li>
+                                    <a href="/editors/">Editors</a>
+                                </li>
+                                {% if user.get_profile.user_type == "Editor" %}
+                                <li>
+                                    <a href="/admin">Admin</a>
+                                </li>
+                                {% endif %}
+                                {% else %}
+                                <li>
+                                    <a href="/story">Stories</a>
+                                </li>
+                                
+                                {% endif %}
+                            </ul>
+                            <ul class="nav pull-right">
+                                {% if user.get_profile %}
+                                <li>
+                                    <a href="/profiles/{{ request.user.username }}">My Profile</a>
+                                </li>
+                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                	<li>
+                                		<a href="/accounts/logout/?next=/accounts/login/?next=/story/inprogress/">Logout</a>
+                                    </li>
+                                {% else %}
+                                	<li>
+                                        <a href="/accounts/logout/?next=/accounts/login/?next=/story/">Logout</a>
+                                    </li>
+                                {% endif %}
+                                {% else %}
+                                	<li>
+                                        <a href="/accounts/logout/?next=/accounts/login/?next=profiles_profile_detail">Logout</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                              
+                        </div> <!-- navbar-responsive-collapse -->	
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+            {% else %}
+            
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/about/">About NNS</a>
+                                </li>
+                            	{% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                <li>
+                                    <a href="/accounts/login/?next=/story/inprogress/">Login</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="/accounts/login/?next=/story/">Login</a>
+                                </li>
+                                {% endif %}
+                                <li>
+                                    <a href="/accounts/register/">Register</a>
+                                </li>
+                            </ul>
+                        </div> <!-- navbar-responsive-collapse -->	
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+            {% endif %}
+            <div class="tabbable">
+            <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+            	{% block front_page_content %}{% endblock %}
+            </div> <!-- tab-pane active -->
+            <div class="tab-pane active" id="tab1">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="tab-pane active" id="tab1">
+                {% block register %}{% endblock %}
+            </div>
+            <div class="tab-pane active" id="tab1">
+                {% block profile_detail %}{% endblock %}
+            </div>
+            <div class="tab-pane active" id="tab1">
+                {% block about %}{% endblock %}
+            </div>
+            <div class="tab-pane active" id="tab1">
+                {% block map %}{% endblock %}
+            </div>
+            </div> <!-- tab-content -->
+            </div> <!-- tabbable -->
+        </div> <!-- span12 column -->
+    </div> <!-- row-fluid -->
+</div> <!-- container-fluid -->
+
+<div class="container">
+    <p><hr></p>
+    <footer class="row">
+        <div class="span6">
+        	<p><a href="mailto:nns.mkquinlan@gmail.com">Mary Kay Quinlan, Bureau Chief</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+        	<a href="https://www.linkedin.com/in/anthonyroberts">
+        	<p>Web Application Developer, Anthony Roberts</p>
+            </a>
+        </div>
+    </footer>
+</div> <!-- container -->
+ 
+</body>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29072162-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>

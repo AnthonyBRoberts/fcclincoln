@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block reporterlist %}
+    
+    <div class="well">
+        {% if user.is_staff %}
+        <h1>These are the Reporters</h1>
+        
+        {% if reporter_list %}
+        <ul>
+        {% for reporter in reporter_list %}<li><a href="/profiles/reporters/{{ reporter.id }}/">{{ reporter.first_name }}</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No Reporters</p>
+        {% endif %}
+        <br>
+        <a href="{% url reporter_add %}">Create New Reporter</a>
+        {% else %}
+        <h3>You do not have permission to view this page</h3>
+        {% endif %}
+    </div>
+    
+{% endblock %}
+

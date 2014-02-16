@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% block unsubscribe %}
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <div class="well">
+        <h2>Unsubscribe</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table>
+                	{{ form|as_bootstrap }}
+            </table>
+            <p><input type="submit" name="submit" value="Save"></p>
+        </form>
+    </div>
+{% endblock %}
+

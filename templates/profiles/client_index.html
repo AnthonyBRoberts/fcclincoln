@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block clientlist %}
+    
+    <div class="well">
+        {% if user.is_staff %}
+        <h1>These are the Clients</h1>
+        
+        {% if clients_list %}
+        <ul>
+        {% for client in clients_list %}<li><a href="/profiles/clients/{{ client.id }}/">{{ client.city }}</a></li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No Clients.</p>
+        {% endif %}
+        <br>
+        {% if user.is_superuser %}
+        <a href="{% url client_add %}">Create New Client</a>
+        {% endif %}
+        {% else %}
+        <h3>You do not have permission to view this page</h3>
+        {% endif %}
+    </div>
+    
+{% endblock %}
+

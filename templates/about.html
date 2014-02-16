@@ -1,0 +1,29 @@
+{% extends "welcome.html" %}
+{% load staticfiles %}
+{% block about %}
+
+<div class="row-fluid">
+            <div class="span8">
+            	<div>
+                    {{ object.text|safe}}
+				</div> <!-- empty -->
+            </div><!-- span8 -->
+            <div class="span4">
+            	<div class="well">
+					<p align="right" >
+                    	<a class="twitter-timeline" height="480" href="https://twitter.com/NebNewsService" data-widget-id="299641054251065346">Tweets by @NebNewsService</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</p>
+    				<p>&quot;The stories produced by the students were timely, well-written and accurate. I especially appreciated the willingness of the Nebraska News Service to cover hearings and report on bills that were of particular interest to (our paper).&quot;</p>
+    				<p>-Kent Warneke, Norfolk Daily News</p>
+					<p>&nbsp;</p>
+    				<p>&quot;For those of us with limited resources and in no close proximity to the legislature, the Nebraska News Service has been a great aid for us.&quot;</p>
+    				<p>-Cody Gerlach, Cambridge Clarion</p>
+    				<p>&nbsp;</p>
+    				<p>&quot;Your news service has certainly helped our newspaper give important coverage of state legislature activities that we simply could not otherwise provide.&quot;</p>
+    				<p>-Klark Byrd, The Sidney Sun-Telegraph</p>
+				</div> <!-- well -->
+            </div> <!-- span4 -->
+            </div> <!-- row-fluid -->
+
+{% endblock %}

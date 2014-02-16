@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="well">
+        {% load i18n %}
+
+        {% block title %}{% trans 'The Twilight Zone' %}{% endblock %}
+
+        {% block content %}
+
+        <h2>{% trans 'You have wandered into the twilight zone' %}</h2>
+
+        <p>{% trans "Hey you. Yeah, you. Guess what? This page don't exist." %}</p>
+    </div>
+    
+{% endblock %}

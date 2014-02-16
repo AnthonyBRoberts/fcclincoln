@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap_toolkit %}
+{% load url from future %}
+{% block extra_head %}
+  <script src="{% static "js/d3/d3.v3.js" %}"></script>
+  <link href="{% static "css/checkbox_styles.css" %}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/queue.v1.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>  
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+    $(function() {
+    $( "#slider" ).slider();
+    });
+  </script>
+  <style>
+
+    .graticule {
+      fill: none;
+      stroke: #777;
+      stroke-width: .5px;
+      stroke-opacity: .5
+    }
+
+    .land {
+      fill: #cccccc;
+    }
+
+    .boundary {
+      fill: none;
+      stroke: #FFF;
+      stroke-width: .5px;
+    }
+    .place,
+    .place-label {
+      fill: #444;
+    }
+    @import url("css/jquery-ui-1.8.17.custom.css");
+
+    body, .ui-widget {
+    }
+
+    svg {
+    width: 1040px;
+    height: 500px;
+    border: solid 1px #ccc;
+    background: #fff;
+    }
+
+    line {
+    stroke: brown;
+    stroke-dasharray: 4,2;
+    }
+
+    path {
+    fill: #ccc;
+    stroke: #fff;
+    }
+  </style>
+{% endblock %}
+{% block map %}
+              <div class="well">
+              <h1 align="center">Nebraska News Service Print Publication Map</h1>
+              <h4 align="center">Source: <a href="https://newsarchive.nebpress.com/">Nebraska Press Association's News Archive</a></h3>
+                <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <li class="brand">Map for the semester</li>
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/map/fall2013/">Fall 2013</a>
+                                </li>
+                                <li>
+                                    <a href="/map/spring2013/">Spring 2013</a>
+                                </li>
+                            </ul>
+                        </div> <!-- navbar-responsive-collapse -->  
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+
+ {% block map_fall2013 %}
+ {% endblock %}           
+
+<div class="container">
+    <p><hr></p>
+    <footer class="row">
+        <div class="span6">
+          <p><a href="mailto:nns.mkquinlan@gmail.com">Mary Kay Quinlan, Bureau Chief</a></p>
+        </div>
+        <div class="span6" style="text-align:right">
+          <a href="https://www.linkedin.com/in/anthonyroberts">
+          <p>Web Application Developer, Anthony Roberts</p>
+            </a>
+        </div>
+    </footer>
+</div> <!-- container -->
+ 
+{% endblock %}
+

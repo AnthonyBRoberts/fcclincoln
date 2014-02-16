@@ -1,0 +1,2 @@
+{% load i18n %}
+{{ site.name }} {% trans "Thanks for registering as a client of the Nebraska News Service" %}

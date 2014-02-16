@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load bootstrap_toolkit %}
+<html lang="en">
+<head>
+	<link href="{% static "favicon.ico" %}" title="Nebraska News Service" type="image/x-icon" rel="icon" />
+    <meta charset="utf-8">
+    <title>Nebraska News Service</title>
+    <meta name="description" content="The Nebraska state government news wire service provided by the University of Nebraska College of Journalism and Mass Communications">
+    <meta name="author" content="Anthony Roberts">
+    {% bootstrap_stylesheet_tag %}
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="{% static "js/html5.js" %}"></script>
+    <![endif]-->
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    {% bootstrap_javascript_tag %}
+    {% block extra_head %}
+    {% endblock %}
+</head>
+
+<body>
+
+<div class="container" style="width:1080px">
+    <div class="row-fluid">
+        <div class="span12 column">
+        	<div class="navbar">
+                <div class="navbar-inner" style="padding:0px">
+                    <div class="container-fluid" style="background-image:url({% static "images/welcome/NE_Legislature_1080x350.jpg" %})">
+                        <a href="/" class="brand"><img src="{% static "images/welcome/nns_logo.png" %}" alt="Nebraska News Service Logo" /></a>
+                        
+                        
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+        {% if user.is_authenticated %}
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            
+                            <ul class="nav">
+                                <li>
+                                    <a href="/about/">About NNS</a>
+                                </li>
+                                <li>
+                                    <a href="/story">Stories</a>
+                                </li>
+                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                <li>
+                                    <a href="/profiles/">Clients</a>
+                                </li>
+                                <li>
+                                    <a href="/reporters/">Reporters</a>
+                                </li>
+                                <li>
+                                    <a href="/editors/">Editors</a>
+                                </li>
+                                {% endif %}
+                                {% if user.get_profile.user_type == "Editor" %}
+
+                                <li>
+                                    <a href="/admin">Admin</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            <ul class="nav pull-right">
+                                {% if user.get_profile %}
+                                <li>
+                                    <a href="/profiles/{{ request.user.username }}">My Profile</a>
+                                </li>
+                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                	<li>
+                                		<a href="/accounts/logout/?next=/accounts/login/?next=/story/inprogress/">Logout</a>
+                                    </li>
+                                {% else %}
+                                	<li>
+                                        <a href="/accounts/logout/?next=/accounts/login/?next=/story/">Logout</a>
+                                    </li>
+                                {% endif %}
+                                {% else %}
+                                	<li>
+                                        <a href="/accounts/logout/?next=/accounts/login/?next=profiles_profile_detail">Logout</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                              
+                        </div> <!-- navbar-responsive-collapse -->		
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+            <div class="tabbable">
+                {% if user.get_profile.user_type == "Reporter" or user.get_profile.user_type == "Editor" %}
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="/story">Published Stories</a>
+                    </li>
+                    <li>
+                        <a href="/story/inprogress">Stories in progress</a>
+                    </li>
+                    <li>
+                        <a href="/story/add/article">New Story</a>
+                    </li>
+                </ul>
+                {% endif %}
+            {% bootstrap_messages %}
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <p>
+                            {% block storylist %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab2">
+                        <p>
+                            {% block article_inprogress_list %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab3">
+                        <p>
+                            {% block storycontent %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab4">
+                        <p>
+                            {% block newstory %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab5">
+                        <p>
+                            {% block profile_detail %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab6">
+                        <p>
+                            {% block create_profile %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab7">
+                        <p>
+                            {% block reporterlist %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab8">
+                        <p>
+                            {% block editorlist %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab9">
+                        <p>
+                            {% block edit_profile %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab10">
+                        <p>
+                            {% block clientlist %}
+                            {% endblock %}
+                        </p>
+                    </div>
+					<div class="tab-pane active" id="tab11">
+                        <p>
+                            {% block unsubscribe %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                    <div class="tab-pane active" id="tab1">
+                        <p>
+                            {% block map %}
+                            {% endblock %}
+                        </p>
+                    </div>
+                </div> <!-- tab-content -->
+            </div> <!-- tabbable -->
+            
+        {% else %}
+            
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="btn btn-navbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a href="/" class="brand">Nebraska News Service</a>
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            <ul class="nav">
+                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                <li>
+                                    <a href="/accounts/login/?next=/story/inprogress/">Login</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="/accounts/login/?next=/story/">Login</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div> <!-- navbar-responsive-collapse -->	
+                    </div> <!-- container-fluid -->
+                </div> <!-- navbar-inner -->
+            </div> <!-- navbar -->
+            <div class="tabbable">
+                
+                {% bootstrap_messages %}
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <p>{% block content %}{% endblock %}</p>
+                    </div>
+                    <div class="tab-pane active" id="tab1">
+                        <p>{% block register %}{% endblock %}</p>
+                    </div>
+                </div> <!-- tab-content -->
+            </div> <!-- tabbable --> 
+            {% endif %}
+
+
+<div class="container">
+    <p><hr></p>
+    <footer class="row">
+        <div class="span6"></div>
+        <div class="span6" style="text-align:right"></div>
+    </footer>
+
+</div> <!-- container -->
+
+</body>
+</html>
+
+

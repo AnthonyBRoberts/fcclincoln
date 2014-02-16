@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% load url from future %}
+{% load i18n %}
+
+{% block profile_detail %}
+    {{block.super}}
+    
+    {% if profile.user.username != request.user.username and request.user.get_profile.user_type == 'Client' or profile.user.username != request.user.username and request.user.get_profile.user_type == 'InactiveClient' %}
+        <h3>You do not have permission to view this page</h3>
+    {% else %}
+    
+        <div class="row-fluid">
+            <div class="span8">
+                {% if profile.user.username == request.user.username %}
+                    <h3>Welcome {{ profile }} </h3>
+                {% endif %}
+				{% if user.get_profile.user_type == 'InactiveClient' %}
+        			<div class="container-fluid">
+        				<p class="text-error">Note: This account has been unsubscribed from email list.</p>
+        			</div>
+        		{% endif %}
+                <h4>{% if profile.user_type == 'Client' or profile.user_type == 'InactiveClient' %}Here's the information we currently have on 
+                		{% if profile.user.username == request.user.username %}your news organization
+                        {% else %}{{profile.pub_name}}
+                        {% endif %}
+                    {% elif profile.user_type == 'Reporter' or profile.user_type == 'Editor' %}Your profile information
+                    {% endif %}
+                </h4>
+                <ul>
+                    <li><strong>Primary Email: </strong>{{ profile.user.email }}</li>
+                    {% if profile.user_type == 'Client' %}
+                    <li><strong>Editor: </strong>{{ profile.user.get_full_name }}</li>
+                    {% endif %}
+                    {% if profile.phone %}
+                    <li><strong>Phone Number: </strong>{{ profile.formatted_phone }}</li>
+                    {% endif %}
+                    {% if profile.address %}
+                    <li><strong>Address: </strong>{{ profile.address }}, {{ profile.city }}, {{ profile.state }} {{ profile.zipcode }}</li>
+                    {% endif %}
+                    {% if profile.pub_area %}
+                    <li><strong>Circulation Area: </strong>{{ profile.pub_area }}</li>
+                    {% endif %}
+                </ul>
+                {% if profile.about %}
+                    <p><strong>Topics of interest</strong><br />
+                    {{ profile.about }}
+                    </p>
+                {% endif %}
+                {% if profile.bio %}
+                    <p><strong>Bio</strong><br />
+                    {{ profile.bio|safe }}
+                    </p>
+                {% endif %}
+                {% if profile.user_type == 'Client' %}
+                    <p><strong>Website and/or Social Media</strong></p>
+                    <ul>
+                        <li>Website: <a href="{{ profile.website }}">{{ profile.website }}</a></li>
+                        <li>Facebook: {{ profile.facebook }}</li>
+                        <li>Twitter: {{ profile.twitter }}</li>
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="span3" align="left">
+                {% if profile.user.username == request.user.username %}
+                    <div class="well" align="center">
+                        <p>
+                        {% if profile.user_type == 'Reporter' %}
+                            <a href="/profiles/reporter/edit">
+                        {% elif profile.user_type == 'Editor' %}
+                            <a href="/profiles/reporter/edit">
+                        {% elif profile.user_type == 'Client' or profile.user_type == 'InactiveClient'%}
+                            <a href="/profiles/client/edit">
+                        {% endif %}
+
+                        <button class="btn btn-large btn-block" type="button">Edit my profile</button></a></p>
+                        {% if profile.user_type == 'Reporter' %}
+                        <p><a href="/reporterdocs"><button class="btn btn-large btn-block" type="button">Reporter Documentation</button></a></p>
+                        {% endif %}
+                        <p><a href="{% url "auth_password_reset" %}"><button class="btn btn-large btn-block" type="button">{% trans "Change password" %}</button></a></p>
+                        {% if request.user.is_superuser %}
+                        <a href="/reporting/"><button class="btn btn-large btn-block" type="button">View SES Stats</button></a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

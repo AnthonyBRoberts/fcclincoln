@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load bootstrap_toolkit %}
+{% load url from future %}
+{% block storylist %}
+
+        {% if lines %}
+            <h2>Published Stories</h2>
+                <style>
+                table{width:100%;}
+                td{padding:5px;}
+                </style>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td><strong>Title</strong></td>
+                        <td><strong>Author</strong></td>
+                        <td><strong>Publish Date</strong></td>
+                    </tr>
+                        {% for line in lines %}
+
+                            <tr>
+                                <td><a href="{% url 'story_article_detail' line.slug %}">{{ line.title }}</a></td>
+                                <td>
+                                	{{ line.author.get_full_name }}
+                                </td>
+                                <td>{{ line.publish_date|date:"D, M d, Y" }}</td>
+                            </tr>
+
+                        {% endfor %}
+                </table>
+                {{ lines|pagination }}
+
+        {% else %}
+            <h2>No articles have been published yet.</h2>
+        {% endif %}
+        <hr>
+        <p>
+            {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                <a href="{% url 'story_article_add' %}"><button class="btn btn-large btn-primary" type="button">Create New Story</button></a>
+            {% endif %}
+        </p>       
+ 
+{% endblock %}

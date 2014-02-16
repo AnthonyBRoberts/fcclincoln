@@ -1,0 +1,31 @@
+@import url(bootstrap.css);
+
+input,
+textarea,
+.uneditable-input {
+  width: 206px;
+}
+
+input.specialtopics {
+  width: 625px;
+}
+
+input.circarea {
+  width: 325px;
+}
+
+input.email {
+  width: 465px;
+}
+
+input.password {
+  width: 210px;
+}
+
+input.zipcode {
+  width: 60px;
+}
+
+input.website {
+  width: 280px;
+}

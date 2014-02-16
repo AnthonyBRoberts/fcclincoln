@@ -1,0 +1,11 @@
+Nebraska News Service
+
+{{ report_subject|striptags }}
+
+Here's the list of email addresses that {{ story_title }} was sent to.
+
+{% for email in email_addresses %}
+{{ forloop.counter }}: {{ email }}
+{% endfor %}
+
+
