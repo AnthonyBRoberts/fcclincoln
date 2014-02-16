@@ -5,8 +5,8 @@
 <head>
 	<link href="{% static "favicon.ico" %}" title="Nebraska News Service" type="image/x-icon" rel="icon" />
 	<meta charset="utf-8">
-    <title>Nebraska News Service</title>
-	<meta name="description" content="The Nebraska state government news wire service provided by the University of Nebraska College of Journalism and Mass Communications">
+    <title>First Christian Church</title>
+	<meta name="description" content="First Christian Church of Lincoln Nebraska">
 	<meta name="author" content="Anthony Roberts">
 	{% bootstrap_stylesheet_tag %}
 	<style type="text/css">
@@ -30,8 +30,8 @@
         <div class="span12 column">
         	<div class="navbar">
                 <div class="navbar-inner" style="padding:0px">
-                    <div class="container-fluid" style="background-image:url({% static "images/welcome/NE_Legislature_1080x350.jpg" %})">
-                        <a href="/" class="brand"><img src="{% static "images/welcome/nns_logo.png" %}" alt="Nebraska News Service Logo" /></a>
+                    <div class="container-fluid">
+                        <a href="/" class="brand"><img src="{% static "images/welcome/fcc_banner.png" %}" alt="Nebraska News Service Logo" /></a>
                         
                         
                     </div> <!-- container-fluid -->
@@ -45,7 +45,7 @@
                             
                             <ul class="nav">
                                 <li>
-                                    <a href="/about/">About NNS</a>
+                                    <a href="/about/">About FCC</a>
                                 </li>
                                 {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
                                 <li>
@@ -105,7 +105,7 @@
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
                                 <li>
-                                    <a href="/about/">About NNS</a>
+                                    <a href="/about/">About FCC</a>
                                 </li>
                             	{% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
                                 <li>
@@ -155,7 +155,6 @@
     <p><hr></p>
     <footer class="row">
         <div class="span6">
-        	<p><a href="mailto:nns.mkquinlan@gmail.com">Mary Kay Quinlan, Bureau Chief</a></p>
         </div>
         <div class="span6" style="text-align:right">
         	<a href="https://www.linkedin.com/in/anthonyroberts">

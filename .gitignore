@@ -1,0 +1,45 @@
+*.py[co]
+*.pyc
+celerybeat.pid
+celerybeat-schedule
+
+# Local data files
+*.db
+
+# idea files
+.idea/*git 
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+#Mr Developer
+.mr.developer.cfg
+
+#remove all settings
+
+settings/aws.py
+settings/common.py
+settings/dev.py
+settings/prod.py
+settings/static.py
+
