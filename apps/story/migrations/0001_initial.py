@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
             ('is_published', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('send_now', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('created_on', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
-            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2014, 2, 16, 0, 0))),
+            ('publish_date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2014, 2, 17, 0, 0))),
             ('docfile', self.gf('django.db.models.fields.files.FileField')(max_length=100, null=True, blank=True)),
         ))
         db.send_create_signal(u'story', ['Article'])
@@ -77,7 +77,7 @@ class Migration(SchemaMigration):
             'email_text': ('django.db.models.fields.CharField', [], {'max_length': '10000', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_published': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'publish_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 2, 16, 0, 0)'}),
+            'publish_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2014, 2, 17, 0, 0)'}),
             'send_now': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '255'}),
             'text': ('django.db.models.fields.CharField', [], {'max_length': '40000'}),
