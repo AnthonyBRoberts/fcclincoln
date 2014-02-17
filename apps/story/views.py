@@ -40,6 +40,15 @@ class AboutView(DetailView):
         context['slug'] = "about-us"
         return context
 
+class CalendarView(DetailView):
+    template_name="about.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="calendar")
+    def get_context_data(self, **kwargs):
+        context = super(CalendarView, self).get_context_data(**kwargs)
+        context['slug'] = "calendar"
+        return context
+
 class ReporterDocsView(DetailView):
     template_name="reporterdocs.html"
     def get_object(self):

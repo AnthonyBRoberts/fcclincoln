@@ -48,7 +48,10 @@
                             
                             <ul class="nav">
                                 <li>
-                                    <a href="/about/">About FCC</a>
+                                    <a href="/about/">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="/calendar/">Calendar</a>
                                 </li>
                                 {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
                                 <li>
@@ -109,6 +112,9 @@
                             <ul class="nav">
                                 <li>
                                     <a href="/about/">About FCC</a>
+                                </li>
+                                <li>
+                                    <a href="/calendar/">Calendar</a>
                                 </li>
                             	{% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
                                 <li>
