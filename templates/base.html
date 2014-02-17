@@ -8,7 +8,6 @@
     <title>First Christian Church</title>
     <meta name="description" content="First Christian Church Lincoln Nebraska">
     <meta name="author" content="Anthony Roberts">
-    {% bootstrap_stylesheet_tag %}
     <style type="text/css">
         body {
             padding-top: 20px;
@@ -19,8 +18,11 @@
     <![endif]-->
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-    {% bootstrap_javascript_tag %}
+    <link href="{% static "css/datetimepicker.css" %}" type="text/css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="{% static "suit-redactor/redactor/redactor.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap-datetimepicker.js" %}"></script>
     <link href="{% static "bootstrap/css/custom.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "suit-redactor/redactor/redactor.css" %}" type="text/css" media="all" rel="stylesheet" />
     {% block extra_head %}
     {% endblock %}
 </head>
