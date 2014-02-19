@@ -1,11 +1,12 @@
 {% extends "welcome.html" %}
 {% load static from staticfiles %}
+{% load staticfiles %}
 {% block front_page_content %}
 
 <div class="row-fluid">
             <div class="span7">
             	<div class="well">
-                    <img src="{{STATIC_URL}}images/welcome/sanctuary_windowflower.jpg" alt="First Christian Church">
+                    <img src="{% static "images/welcome/sanctuary_windowflower.jpg" %}" alt="First Christian Church">
                     {{ object.text|safe}}
 				</div> <!-- empty -->
             </div><!-- span8 -->
