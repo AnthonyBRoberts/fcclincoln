@@ -49,13 +49,40 @@ class CalendarView(DetailView):
         context['slug'] = "calendar"
         return context
 
-class ReporterDocsView(DetailView):
-    template_name="reporterdocs.html"
+class VisitorsView(DetailView):
+    template_name="about.html"
     def get_object(self):
-        return get_object_or_404(Article, slug="reporter-documentation")
+        return get_object_or_404(Article, slug="visitors")
     def get_context_data(self, **kwargs):
-        context = super(ReporterDocsView, self).get_context_data(**kwargs)
-        context['slug'] = "reporter-documentation"
+        context = super(VisitorsView, self).get_context_data(**kwargs)
+        context['slug'] = "visitors"
+        return context
+
+class MinistriesView(DetailView):
+    template_name="about.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="ministries")
+    def get_context_data(self, **kwargs):
+        context = super(MinistriesView, self).get_context_data(**kwargs)
+        context['slug'] = "ministries"
+        return context
+
+class ContactView(DetailView):
+    template_name="about.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="contact")
+    def get_context_data(self, **kwargs):
+        context = super(ContactView, self).get_context_data(**kwargs)
+        context['slug'] = "contact"
+        return context
+
+class NewsView(DetailView):
+    template_name="about.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="news")
+    def get_context_data(self, **kwargs):
+        context = super(NewsView, self).get_context_data(**kwargs)
+        context['slug'] = "news"
         return context
 
 @login_required 

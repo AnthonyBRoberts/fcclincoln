@@ -12,7 +12,6 @@
 	<style type="text/css">
         body {
             padding-top: 20px;
-            background-image:url('https://s3.amazonaws.com/static.fcclincoln.herokuapp.com/images/welcome/bg.jpg');
         }
 	</style>
     <!--[if lt IE 9]>
@@ -36,7 +35,14 @@
                 <div class="navbar-inner" style="padding:0px">
                     <div class="container-fluid">
                         <a href="/" class="brand"><img src="{% static "images/welcome/fcc_banner.png" %}" alt="First Christian Church" /></a>
-                        
+                        <p align="right"><br />
+                            430 South 16th Street (16th and K)<br />
+                            Lincoln, Nebraska 68508<br />
+                            Phone: (402) 475-4289<br />
+                            Fax: (402) 475-4280<br />
+                            Email: office@fcclincoln.org<br />
+                            Rev. Steve Mason, Pastor<br />
+                            Email: pastorsteve@fcclincoln.org</p>
                         
                     </div> <!-- container-fluid -->
                 </div> <!-- navbar-inner -->
@@ -49,35 +55,23 @@
                             
                             <ul class="nav">
                                 <li>
+                                    <a href="/visitors/">Welcome</a>
+                                </li>
+                                <li>
                                     <a href="/about/">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="/ministries/">Ministries</a>
                                 </li>
                                 <li>
                                     <a href="/calendar/">Calendar</a>
                                 </li>
-                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
                                 <li>
-                                    <a href="/story">Stories</a>
+                                    <a href="/news/">News &amp; Events</a>
                                 </li>
                                 <li>
-                                    <a href="/profiles/">Clients</a>
+                                    <a href="/contact/">Contact Us</a>
                                 </li>
-                                <li>
-                                    <a href="/reporters/">Reporters</a>
-                                </li>
-                                <li>
-                                    <a href="/editors/">Editors</a>
-                                </li>
-                                {% if user.get_profile.user_type == "Editor" %}
-                                <li>
-                                    <a href="/admin">Admin</a>
-                                </li>
-                                {% endif %}
-                                {% else %}
-                                <li>
-                                    <a href="/story">Stories</a>
-                                </li>
-                                
-                                {% endif %}
                             </ul>
                             <ul class="nav pull-right">
                                 {% if user.get_profile %}

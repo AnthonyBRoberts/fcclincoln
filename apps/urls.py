@@ -15,22 +15,10 @@ urlpatterns = patterns('',
     url(r'^$', FrontpageView.as_view()),
     url(r'^about/$', AboutView.as_view()),
     url(r'^calendar/$', CalendarView.as_view()),
-    url(r'^reporterdocs/$', ReporterDocsView.as_view()),
-    url(r'^map/$', ListView.as_view(
-        template_name="newsarchive_map_fall2013.html",
-        model=UserProfile,
-        )
-    ),
-    url(r'^map/fall2013/$', ListView.as_view(
-        template_name="newsarchive_map_fall2013.html",
-        model=UserProfile,
-        )
-    ),
-        url(r'^map/spring2013/$', ListView.as_view(
-        template_name="newsarchive_map_spring2013.html",
-        model=UserProfile,
-        )
-    ),
+    url(r'^visitors/$', VisitorsView.as_view()),
+    url(r'^ministries/$', MinistriesView.as_view()),
+    url(r'^contact/$', ContactView.as_view()),
+    url(r'^news/$', NewsView.as_view()),
     url(r'^accounts/register/$',
         register,
         {'backend': 'registration.backends.default.DefaultBackend',
