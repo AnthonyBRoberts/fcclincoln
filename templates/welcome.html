@@ -106,20 +106,28 @@
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
                                 <li>
-                                    <a href="/about/">About FCC</a>
+                                    <a href="/visitors/">Welcome</a>
+                                </li>
+                                <li>
+                                    <a href="/about/">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="/ministries/">Ministries</a>
                                 </li>
                                 <li>
                                     <a href="/calendar/">Calendar</a>
                                 </li>
-                            	{% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
+                                <li>
+                                    <a href="/news/">News &amp; Events</a>
+                                </li>
+                                <li>
+                                    <a href="/contact/">Contact Us</a>
+                                </li>
+                            </ul>
+                            <ul class="nav pull-right">
                                 <li>
                                     <a href="/accounts/login/?next=/story/inprogress/">Login</a>
                                 </li>
-                                {% else %}
-                                <li>
-                                    <a href="/accounts/login/?next=/story/">Login</a>
-                                </li>
-                                {% endif %}
                             </ul>
                         </div> <!-- navbar-responsive-collapse -->	
                     </div> <!-- container-fluid -->
