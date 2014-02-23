@@ -18,7 +18,7 @@
                     </tr>
                         {% for line in lines %}
                             <tr>
-                                <td><a href="{% url 'story_article_detail' line.slug %}">{{ line.title }}</a></td>
+                                <td><a href="{% url 'story_article_edit' line.slug %}">{{ line.title }}</a></td>
                                 <td> {{ line.author.get_full_name }} </td>
                                 <td> {{ line.created_on|date:"D, M d, Y" }}</td>
                             </tr>

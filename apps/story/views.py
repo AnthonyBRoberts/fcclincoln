@@ -68,7 +68,7 @@ class MinistriesView(DetailView):
         return context
 
 class ContactView(DetailView):
-    template_name="about.html"
+    template_name="no_image.html"
     def get_object(self):
         return get_object_or_404(Article, slug="contact")
     def get_context_data(self, **kwargs):
