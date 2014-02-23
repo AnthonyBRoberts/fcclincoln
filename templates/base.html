@@ -49,24 +49,18 @@
                             
                             <ul class="nav">
                                 <li>
-                                    <a href="/about/">About FCC</a>
+                                    <a href="/">Welcome</a>
                                 </li>
                                 <li>
-                                    <a href="/story">Stories</a>
-                                </li>
-                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
-                                <li>
-                                    <a href="/profiles/">Clients</a>
+                                    <a href="/story">Pastor Message Pages</a>
                                 </li>
                                 <li>
-                                    <a href="/reporters/">Reporters</a>
+                                    <a href="/story/inprogress">Website Pages</a>
                                 </li>
                                 <li>
-                                    <a href="/editors/">Editors</a>
+                                    <a href="/story/add/article">New Page</a>
                                 </li>
-                                {% endif %}
                                 {% if user.get_profile.user_type == "Editor" %}
-
                                 <li>
                                     <a href="/admin">Admin</a>
                                 </li>
@@ -98,19 +92,6 @@
                 </div> <!-- navbar-inner -->
             </div> <!-- navbar -->
             <div class="tabbable">
-                {% if user.get_profile.user_type == "Reporter" or user.get_profile.user_type == "Editor" %}
-                <ul class="nav nav-tabs">
-                    <li>
-                        <a href="/story">Published Stories</a>
-                    </li>
-                    <li>
-                        <a href="/story/inprogress">Stories in progress</a>
-                    </li>
-                    <li>
-                        <a href="/story/add/article">New Story</a>
-                    </li>
-                </ul>
-                {% endif %}
             {% bootstrap_messages %}
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
