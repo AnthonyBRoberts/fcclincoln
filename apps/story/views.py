@@ -85,6 +85,15 @@ class NewsView(DetailView):
         context['slug'] = "news"
         return context
 
+class MusicView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="music")
+    def get_context_data(self, **kwargs):
+        context = super(MusicView, self).get_context_data(**kwargs)
+        context['slug'] = "music"
+        return context
+
 @login_required 
 def inprogress_index(request):
     """

@@ -1,31 +1,18 @@
 {% extends "welcome.html" %}
-{% load static from staticfiles %}
 {% load staticfiles %}
-{% block front_page_content %}
+{% block about %}
 
 <div class="row-fluid">
             <div class="span7">
             	<div class="well">
-                    {% if object.docfile %}
-
-                    <img src="{% static "docs/2014/02/23/sanctuary_windowflower.jpg" %}" alt="First Christian Church" />
-                    {% endif %}
+                    <img src="{% static "images/welcome/choir_edit.jpg" %}" alt="First Christian Church" />
+                    <p></p>
                     {{ object.text|safe}}
 				</div> <!-- empty -->
             </div><!-- span8 -->
             <div class="span1"></div>
             <div class="span4">
             	<div class="well">
-                    <h4>Upcoming Events:</h4>
-
-<p>Sunday, February 23, 2014 
-10 & 11:15 a.m. Worship 
-Rev. Steve Mason</p>
-
-<p>Wednesday, March 5, 2014 
-Ash Wednesday Soup Supper & Worship Service 
-Supper at 6:15 p.m. 
-Worship at 7:00 p.m.</p>
                     <p><strong>Sunday Services</strong><br />
                         9:00 A.M. Sunday School, Adult Seekers<br />
                         10:00 &amp; 11:15 A.M. Worship</p>

@@ -5,9 +5,7 @@
 <div class="row-fluid">
             <div class="span7">
             	<div class="well">
-                    {% if object.docfile %}
-                    <img src="{{STATIC_URL}}{{ object.docfile }}" alt="First Christian Church" />
-                    {% endif %}
+                    <img src="{% static "docs/2014/02/23/communion_greyscale.jpg" %}" alt="First Christian Church" />
                     <p></p>
                     {{ object.text|safe}}
 				</div> <!-- empty -->
