@@ -3,7 +3,7 @@
 {% block about %}
 
 <div class="row-fluid">
-            <div class="span7">
+            <div class="span8">
             	<div class="well">
                     {% if object.docfile %}
                     <img src="{{STATIC_URL}}{{ object.docfile }}" alt="First Christian Church" />
@@ -12,7 +12,6 @@
                     {{ object.text|safe}}
 				</div> <!-- empty -->
             </div><!-- span8 -->
-            <div class="span1"></div>
             <div class="span4">
             	<div class="well">
                     <p><strong>Sunday Services</strong><br />

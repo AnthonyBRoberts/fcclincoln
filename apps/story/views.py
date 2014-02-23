@@ -31,17 +31,17 @@ class FrontpageView(DetailView):
         context['reporter_list'] = queryset
         return context
 
-class AboutView(DetailView):
+class HistoryView(DetailView):
     template_name="about.html"
     def get_object(self):
-        return get_object_or_404(Article, slug="about-us")
+        return get_object_or_404(Article, slug="history")
     def get_context_data(self, **kwargs):
-        context = super(AboutView, self).get_context_data(**kwargs)
-        context['slug'] = "about-us"
+        context = super(HistoryView, self).get_context_data(**kwargs)
+        context['slug'] = "history"
         return context
 
 class CalendarView(DetailView):
-    template_name="about.html"
+    template_name="calendar.html"
     def get_object(self):
         return get_object_or_404(Article, slug="calendar")
     def get_context_data(self, **kwargs):

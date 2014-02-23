@@ -35,14 +35,12 @@
                 <div class="navbar-inner" style="padding:0px">
                     <div class="container-fluid">
                         <a href="/" class="brand"><img src="{% static "images/welcome/fcc_banner.png" %}" alt="First Christian Church" /></a>
-                        <p align="right"><br />
-                            430 South 16th Street (16th and K)<br />
-                            Lincoln, Nebraska 68508<br />
+                        <h4 class="pull-right" align="right"><br /><br /><br />
+                            16th &amp; K Street<br />
+                            Lincoln, Nebraska<br />
                             Phone: (402) 475-4289<br />
-                            Fax: (402) 475-4280<br />
-                            Email: office@fcclincoln.org<br />
-                            Rev. Steve Mason, Pastor<br />
-                            Email: pastorsteve@fcclincoln.org</p>
+                            Rev. Steve Mason, Pastor
+                        </h4>
                         
                     </div> <!-- container-fluid -->
                 </div> <!-- navbar-inner -->
@@ -53,15 +51,35 @@
                     <div class="container-fluid">
              			<div class="nav-collapse collapse navbar-responsive-collapse">
                             
-                            <ul class="nav">
+                            <ul class="nav nav-pills">
                                 <li>
-                                    <a href="/visitors/">Welcome</a>
+                                    <a href="/">Welcome</a>
                                 </li>
-                                <li>
-                                    <a href="/about/">About Us</a>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="/about/">
+                                        About Us<b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/worship/">Worship</a></li>
+                                        <li><a href="/sermons/">Sermons</a></li>
+                                        <li><a href="/music/">Music</a></li>
+                                        <li><a href="/visitors/">Vistor FAQ</a></li>
+                                        <li><a href="/contact/">Staff</a></li>
+                                        <li><a href="/weddings/">Weddings</a></li>
+                                        <li><a href="/history/">History</a></li>
+                                    </ul>
                                 </li>
-                                <li>
-                                    <a href="/ministries/">Ministries</a>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="/ministries/">
+                                        Ministries <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/ministry/children/">Children</a></li>
+                                        <li><a href="/ministry/youth/">Youth</a></li>
+                                        <li><a href="/ministry/adults/">Adults</a></li>
+                                        <li><a href="/church_life/">Church Life</a></li>
+                                        <li><a href="/outreach/">Outreach</a></li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="/calendar/">Calendar</a>
