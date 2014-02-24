@@ -94,6 +94,78 @@ class MusicView(DetailView):
         context['slug'] = "music"
         return context
 
+class WorshipView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="worship")
+    def get_context_data(self, **kwargs):
+        context = super(WorshipView, self).get_context_data(**kwargs)
+        context['slug'] = "worship"
+        return context
+
+class SermonsView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="sermons")
+    def get_context_data(self, **kwargs):
+        context = super(SermonsView, self).get_context_data(**kwargs)
+        context['slug'] = "sermons"
+        return context
+
+class ChurchLifeView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="church-life")
+    def get_context_data(self, **kwargs):
+        context = super(ChurchLifeView, self).get_context_data(**kwargs)
+        context['slug'] = "church-life"
+        return context
+
+class WeddingsView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="weddings")
+    def get_context_data(self, **kwargs):
+        context = super(WeddingsView, self).get_context_data(**kwargs)
+        context['slug'] = "weddings"
+        return context
+
+class OutreachView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="outreach")
+    def get_context_data(self, **kwargs):
+        context = super(OutreachView, self).get_context_data(**kwargs)
+        context['slug'] = "outreach"
+        return context
+
+class ChildrenView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="children")
+    def get_context_data(self, **kwargs):
+        context = super(ChildrenView, self).get_context_data(**kwargs)
+        context['slug'] = "children"
+        return context
+
+class YouthView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="youth")
+    def get_context_data(self, **kwargs):
+        context = super(YouthView, self).get_context_data(**kwargs)
+        context['slug'] = "youth"
+        return context
+
+class AdultsView(DetailView):
+    template_name="music.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="adults")
+    def get_context_data(self, **kwargs):
+        context = super(AdultsView, self).get_context_data(**kwargs)
+        context['slug'] = "adults"
+        return context
+
 @login_required 
 def inprogress_index(request):
     """
