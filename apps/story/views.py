@@ -50,7 +50,7 @@ class CalendarView(DetailView):
         return context
 
 class VisitorsView(DetailView):
-    template_name="about.html"
+    template_name="welcomev.html"
     def get_object(self):
         return get_object_or_404(Article, slug="visitors")
     def get_context_data(self, **kwargs):
@@ -122,7 +122,7 @@ class ChurchLifeView(DetailView):
         return context
 
 class WeddingsView(DetailView):
-    template_name="music.html"
+    template_name="weddings.html"
     def get_object(self):
         return get_object_or_404(Article, slug="weddings")
     def get_context_data(self, **kwargs):
