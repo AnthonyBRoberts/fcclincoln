@@ -37,7 +37,7 @@
                         <a href="/" class="brand"><img src="{% static "images/welcome/fcc_banner.png" %}" alt="First Christian Church" /></a>
                         <div class="pull-right">
                         <h3 align="right">
-                            16th &amp; K Street</h3>
+                            16th &amp; K Street<br /></h3>
 
                         <h4 class="pull-right" align="right">
                             Lincoln, Nebraska<br />
@@ -49,12 +49,8 @@
                     </div> <!-- container-fluid -->
                 </div> <!-- navbar-inner -->
             </div> <!-- navbar -->
-            {% if user.is_authenticated %}
             <div class="navbar">
                 <div class="navbar-inner">
-                    <div class="container-fluid">
-             			<div class="nav-collapse collapse navbar-responsive-collapse">
-                            
                             <ul class="nav nav-pills">
                                 <li>
                                     <a href="/">Welcome</a>
@@ -96,66 +92,21 @@
                                 </li>
                             </ul>
                             <ul class="nav pull-right">
-                                {% if user.get_profile %}
+                                {% if user.is_authenticated %}
                                 <li>
                                     <a href="/profiles/{{ request.user.username }}">My Profile</a>
                                 </li>
-                                {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
-                                	<li>
-                                		<a href="/accounts/logout/?next=/accounts/login/?next=/story/inprogress/">Logout</a>
-                                    </li>
+                            	<li>
+                                    <a href="/accounts/logout/?next=/">Logout</a>
+                                </li>
                                 {% else %}
                                 	<li>
-                                        <a href="/accounts/logout/?next=/accounts/login/?next=/story/">Logout</a>
-                                    </li>
-                                {% endif %}
-                                {% else %}
-                                	<li>
-                                        <a href="/accounts/logout/?next=/accounts/login/?next=profiles_profile_detail">Logout</a>
+                                        <a href="/accounts/login/?next=/story/">Login</a>
                                     </li>
                                 {% endif %}
                             </ul>
-                              
-                        </div> <!-- navbar-responsive-collapse -->	
-                    </div> <!-- container-fluid -->
                 </div> <!-- navbar-inner -->
             </div> <!-- navbar -->
-            {% else %}
-            
-            <div class="navbar">
-                <div class="navbar-inner">
-                    <div class="container-fluid">
-                        <div class="nav-collapse collapse navbar-responsive-collapse">
-                            <ul class="nav">
-                                <li>
-                                    <a href="/visitors/">Welcome</a>
-                                </li>
-                                <li>
-                                    <a href="/about/">About Us</a>
-                                </li>
-                                <li>
-                                    <a href="/ministries/">Ministries</a>
-                                </li>
-                                <li>
-                                    <a href="/calendar/">Calendar</a>
-                                </li>
-                                <li>
-                                    <a href="/news/">News &amp; Events</a>
-                                </li>
-                                <li>
-                                    <a href="/contact/">Contact Us</a>
-                                </li>
-                            </ul>
-                            <ul class="nav pull-right">
-                                <li>
-                                    <a href="/accounts/login/?next=/story/inprogress/">Login</a>
-                                </li>
-                            </ul>
-                        </div> <!-- navbar-responsive-collapse -->	
-                    </div> <!-- container-fluid -->
-                </div> <!-- navbar-inner -->
-            </div> <!-- navbar -->
-            {% endif %}
             <div class="tabbable">
             <div class="tab-content">
             <div class="tab-pane active" id="tab1">

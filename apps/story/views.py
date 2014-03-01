@@ -172,7 +172,7 @@ def inprogress_index(request):
     Stories in progress view, a list of all stories in progress
     """
     inprogress_list = Article.objects.filter(is_published=False).order_by('-publish_date')
-    paginator = Paginator(inprogress_list, 10)
+    paginator = Paginator(inprogress_list, 20)
     page = request.GET.get('page')
     try:
         show_lines = paginator.page(page)
@@ -191,7 +191,7 @@ def story_index(request):
     Story index view, a list of all published stories
     """
     story_list = Article.objects.filter(is_published=True).order_by('-publish_date')
-    paginator = Paginator(story_list, 10)
+    paginator = Paginator(story_list, 20)
     page = request.GET.get('page')
     try:
         show_lines = paginator.page(page)
