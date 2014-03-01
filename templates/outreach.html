@@ -1,0 +1,28 @@
+{% extends "welcome.html" %}
+{% load staticfiles %}
+{% block about %}
+
+<div class="row-fluid">
+            <div class="span8">
+            	<div class="well" style="background-image:url({% static "images/welcome/love_window.png" %}); background-repeat: no-repeat; height:600px">
+                    <div class="span3">
+                    <p></p>
+                    </div><!-- span4 -->
+                    <div class="span9">
+                    <p></p>
+                    {{ object.text|safe}}
+                    </div><!-- span8 -->
+				</div> <!-- empty -->
+            </div><!-- span8 -->
+            <div class="span4">
+            	<div class="well">
+                    <p><strong>Sunday Services</strong><br />
+                        9:00 A.M. Sunday School, Adult Seekers<br />
+                        10:00 &amp; 11:15 A.M. Worship</p>
+                    <p><strong>Tuesday Service</strong><br />
+                        12:10 - 12:30 P.M.<br />Every Tuesday Worship in the Chapel</p>
+				</div> <!-- well -->
+            </div> <!-- span4 -->
+            </div> <!-- row-fluid -->
+
+{% endblock %}

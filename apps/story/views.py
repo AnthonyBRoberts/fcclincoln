@@ -95,7 +95,7 @@ class MusicView(DetailView):
         return context
 
 class WorshipView(DetailView):
-    template_name="music.html"
+    template_name="worship.html"
     def get_object(self):
         return get_object_or_404(Article, slug="worship")
     def get_context_data(self, **kwargs):
@@ -131,7 +131,7 @@ class WeddingsView(DetailView):
         return context
 
 class OutreachView(DetailView):
-    template_name="music.html"
+    template_name="outreach.html"
     def get_object(self):
         return get_object_or_404(Article, slug="outreach")
     def get_context_data(self, **kwargs):
