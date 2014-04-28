@@ -76,6 +76,15 @@ class ContactView(DetailView):
         context['slug'] = "contact"
         return context
 
+class StaffView(DetailView):
+    template_name="no_image.html"
+    def get_object(self):
+        return get_object_or_404(Article, slug="staff")
+    def get_context_data(self, **kwargs):
+        context = super(StaffView, self).get_context_data(**kwargs)
+        context['slug'] = "staff"
+        return context
+
 class NewsView(DetailView):
     template_name="about.html"
     def get_object(self):

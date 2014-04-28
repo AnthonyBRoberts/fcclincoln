@@ -43,3 +43,4 @@ settings/dev.py
 settings/prod.py
 settings/static.py
 
+static/workfiles/*
