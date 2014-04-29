@@ -10,7 +10,7 @@ urlpatterns = patterns('',
         'story.views.inprogress_index',
         name='inprogress_list'),
     url(r'^article/(?P<slug>[-\w]+)$', 
-        DetailView.as_view(queryset=Article.objects.all()),
+        'story.views.sermon_detail_view',
         name='story_article_detail'
     ),
     url(r'^add/article$',

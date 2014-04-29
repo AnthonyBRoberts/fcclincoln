@@ -8,7 +8,7 @@
                     {{ object.text|safe}}
                     <p><strong>Chapel</strong>
 
-                    <img src="{{STATIC_URL}}{{ object.docfile }}" alt="First Christian Church" />
+                    <img src="{% static "images/welcome/weddings.jpg" %}" alt="First Christian Church" />
                     <div class="well span6">
                         <p><strong>Sanctuary</strong><br />
                             <img src="{% static "images/welcome/weddings2.jpg" %}" alt="First Christian Church" />
@@ -24,11 +24,10 @@
 
             <div class="span4">
             	<div class="well">
-                    <p><strong>Sunday Services</strong><br />
-                        9:00 A.M. Sunday School, Adult Seekers<br />
-                        10:00 &amp; 11:15 A.M. Worship</p>
-                    <p><strong>Tuesday Service</strong><br />
-                        12:10 - 12:30 P.M.<br />Every Tuesday Worship in the Chapel</p>
+                    {% for event in events %}
+                        <h4>{{ event.title|safe }}</h4>
+                        <p>{{ event.text|safe }}</p>
+                    {% endfor %}
 				</div> <!-- well -->
             </div> <!-- span4 -->
             </div> <!-- row-fluid -->

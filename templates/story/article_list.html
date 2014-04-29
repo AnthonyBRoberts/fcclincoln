@@ -34,8 +34,8 @@
         {% endif %}
         <hr>
         <p>
-            {% if user.get_profile.user_type == 'Reporter' or user.get_profile.user_type == 'Editor' %}
-                <a href="{% url 'story_article_add' %}"><button class="btn btn-large btn-primary" type="button">Create New Story</button></a>
+            {% if user.is_staff %}
+                <a href="{% url 'story_article_add' %}"><button class="btn btn-large btn-primary" type="button">New Pastor Message</button></a>
             {% endif %}
         </p>       
  
