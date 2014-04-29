@@ -27,8 +27,8 @@ class FrontpageView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(FrontpageView, self).get_context_data(**kwargs)
         context['slug'] = "front-page"
-        queryset = UserProfile.objects.filter(user_type="Reporter")
-        context['reporter_list'] = queryset
+        queryset2 = Article.objects.filter(slug="events")
+        context['events'] = queryset2
         return context
 
 class HistoryView(DetailView):

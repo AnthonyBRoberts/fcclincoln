@@ -3,21 +3,25 @@
 {% block about %}
 
 <div class="row-fluid">
-            <div class="span7">
+            <div class="span8">
             	<div class="well">
                     {{ object.text|safe}}
-                    <p>Chapel
-                    <img src="{% static "images/welcome/weddings.jpg" %}" alt="First Christian Church" />
-                    </p>
-                    <p>Sanctuary<br />
-                    <img src="{% static "images/welcome/weddings2.jpg" %}" alt="First Christian Church" />
-                    </p>
-                    <p>Outside<br />
-                    <img src="{% static "images/welcome/weddings3.jpg" %}" alt="First Christian Church" />
-                    </p>
-				</div> <!-- empty -->
+                    <p><strong>Chapel</strong>
+
+                    <img src="{{STATIC_URL}}{{ object.docfile }}" alt="First Christian Church" />
+                    <div class="well span6">
+                        <p><strong>Sanctuary</strong><br />
+                            <img src="{% static "images/welcome/weddings2.jpg" %}" alt="First Christian Church" />
+                        </p>
+                    </div>
+                    <div class="well span5">
+                        <p><strong>Outside</strong><br />
+                            <img src="{% static "images/welcome/weddings3.jpg" %}" alt="First Christian Church" />
+                        </p>
+                    </div>
+				</div> <!-- well -->
             </div><!-- span8 -->
-            <div class="span1"></div>
+
             <div class="span4">
             	<div class="well">
                     <p><strong>Sunday Services</strong><br />
